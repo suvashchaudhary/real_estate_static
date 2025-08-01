@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Properties | Find Your Dream Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="#" class="logo">Dream <span>Properties</span></a>
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#properties">Properties</a></li>
+              <li><a href="#agents">Agents</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Find Your Dream Home Today</h1>
+          <p>
+            Discover the perfect property that matches your lifestyle and budget
+            from our extensive collection of listings across the country.
+          </p>
+          <a href="#properties" class="btn">Browse Properties</a>
+          <a href="#contact" class="btn btn-outline">Contact Agent</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="properties" class="container">
+      <h2 class="section-title">Featured Properties</h2>
+
+      <div class="filter-section">
+        <h3>Filter Properties</h3>
+        <form class="filter-form" id="propertyFilter">
+          <div class="filter-group">
+            <label for="location">Location</label>
+            <select id="location">
+              <option value="">All Locations</option>
+              <option value="New York">New York</option>
+              <option value="Los Angeles">Los Angeles</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Miami">Miami</option>
+              <option value="Houston">Houston</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="price">Max Price</label>
+            <select id="price">
+              <option value="">Any Price</option>
+              <option value="300000">$300,000</option>
+              <option value="500000">$500,000</option>
+              <option value="750000">$750,000</option>
+              <option value="1000000">$1,000,000</option>
+              <option value="1500000">$1,500,000</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="bedrooms">Bedrooms</label>
+            <select id="bedrooms">
+              <option value="">Any</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>&nbsp;</label>
+            <button type="submit" class="btn">Apply Filters</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="properties" id="propertyList">
+        <!-- Property cards will be dynamically inserted here by JavaScript -->
+      </div>
+    </section>
+
+    <section id="agents" class="container">
+      <h2 class="section-title">Our Agents</h2>
+
+      <div class="agents">
+        <div class="agent-card">
+          <div class="agent-img">
+            <img
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              alt="Sarah Johnson"
+            />
+          </div>
+          <h3 class="agent-name">Sarah Johnson</h3>
+          <p class="agent-title">Senior Real Estate Agent</p>
+          <div class="agent-contact">
+            <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> sarah@primeproperties.com</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-img">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="Michael Chen"
+            />
+          </div>
+          <h3 class="agent-name">Michael Chen</h3>
+          <p class="agent-title">Luxury Property Specialist</p>
+          <div class="agent-contact">
+            <p><i class="fas fa-phone"></i> (555) 234-5678</p>
+            <p><i class="fas fa-envelope"></i> michael@primeproperties.com</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-img">
+            <img
+              src="https://randomuser.me/api/portraits/women/68.jpg"
+              alt="Emily Rodriguez"
+            />
+          </div>
+          <h3 class="agent-name">Emily Rodriguez</h3>
+          <p class="agent-title">First-Time Home Buyer Expert</p>
+          <div class="agent-contact">
+            <p><i class="fas fa-phone"></i> (555) 345-6789</p>
+            <p><i class="fas fa-envelope"></i> emily@primeproperties.com</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-img">
+            <img
+              src="https://randomuser.me/api/portraits/men/75.jpg"
+              alt="David Wilson"
+            />
+          </div>
+          <h3 class="agent-name">David Wilson</h3>
+          <p class="agent-title">Commercial Real Estate</p>
+          <div class="agent-contact">
+            <p><i class="fas fa-phone"></i> (555) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> david@primeproperties.com</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div
+        style="
+          background-color: white;
+          padding: 2rem;
+          border-radius: 8px;
+          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+          margin-bottom: 4rem;
+        "
+      >
+        <form id="contactForm" style="max-width: 600px; margin: 0 auto">
+          <div style="margin-bottom: 1.5rem">
+            <label
+              style="display: block; margin-bottom: 0.5rem; font-weight: 600"
+              >Name</label
+            >
+            <input
+              type="text"
+              style="
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1rem;
+              "
+              required
+            />
+          </div>
+          <div style="margin-bottom: 1.5rem">
+            <label
+              style="display: block; margin-bottom: 0.5rem; font-weight: 600"
+              >Email</label
+            >
+            <input
+              type="email"
+              style="
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1rem;
+              "
+              required
+            />
+          </div>
+          <div style="margin-bottom: 1.5rem">
+            <label
+              style="display: block; margin-bottom: 0.5rem; font-weight: 600"
+              >Phone</label
+            >
+            <input
+              type="tel"
+              style="
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1rem;
+              "
+            />
+          </div>
+          <div style="margin-bottom: 1.5rem">
+            <label
+              style="display: block; margin-bottom: 0.5rem; font-weight: 600"
+              >Message</label
+            >
+            <textarea
+              rows="5"
+              style="
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1rem;
+              "
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Prime Properties</h3>
+            <p style="color: var(--light); margin-bottom: 1rem">
+              Helping you find your dream home since 2005.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#properties">Properties</a></li>
+              <li><a href="#agents">Agents</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">Buying</a></li>
+              <li><a href="#">Selling</a></li>
+              <li><a href="#">Renting</a></li>
+              <li><a href="#">Property Management</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact Info</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Main St, New York, NY
+                10001
+              </li>
+              <li><i class="fas fa-phone"></i> (555) 987-6543</li>
+              <li><i class="fas fa-envelope"></i> info@primeproperties.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; created by suvash chaudhary. All Rights Reserved!</p>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
