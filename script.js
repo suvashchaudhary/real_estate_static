@@ -1,9 +1,11 @@
-// Sample property data
+// Conversion note: I converted original prices to NPR using 1 USD = 133 NPR.
+// If you'd rather keep raw numbers as-is, tell me and I'll adapt the filters instead.
+
 const properties = [
   {
     id: 1,
     title: "Modern Kathmandu Apartment",
-    price: 450000,
+    price: 59850000,
     location: "Kathmandu",
     bedrooms: 2,
     bathrooms: 2,
@@ -15,7 +17,7 @@ const properties = [
   {
     id: 2,
     title: "Luxury Pokhara Lakeside Villa",
-    price: 120000,
+    price: 15960000,
     location: "Pokhara",
     bedrooms: 4,
     bathrooms: 3.5,
@@ -27,7 +29,7 @@ const properties = [
   {
     id: 3,
     title: "Charming Bhaktapur Heritage Home",
-    price: 325000,
+    price: 43225000,
     location: "Bhaktapur",
     bedrooms: 3,
     bathrooms: 2,
@@ -39,7 +41,7 @@ const properties = [
   {
     id: 4,
     title: "Simple Biratnagar Apartment",
-    price: 10000000,
+    price: 1330000000,
     location: "Biratnagar",
     bedrooms: 2,
     bathrooms: 1,
@@ -51,7 +53,7 @@ const properties = [
   {
     id: 5,
     title: "Spacious Lalitpur Family Home",
-    price: 425000,
+    price: 56525000,
     location: "Lalitpur",
     bedrooms: 4,
     bathrooms: 2.5,
@@ -63,7 +65,7 @@ const properties = [
   {
     id: 6,
     title: "Penthouse with Himalayan Views",
-    price: 85000,
+    price: 11305000,
     location: "Kathmandu",
     bedrooms: 3,
     bathrooms: 3,
@@ -75,7 +77,7 @@ const properties = [
   {
     id: 7,
     title: "Cozy Dhulikhel Cottage",
-    price: 27500,
+    price: 3657500,
     location: "Dhulikhel",
     bedrooms: 2,
     bathrooms: 1,
@@ -87,7 +89,7 @@ const properties = [
   {
     id: 8,
     title: "Modern Luxury Chitwan Condo",
-    price: 65000,
+    price: 8645000,
     location: "Chitwan",
     bedrooms: 2,
     bathrooms: 2,
@@ -99,7 +101,7 @@ const properties = [
   {
     id: 9,
     title: "Luxury Patan Heritage House",
-    price: 650000,
+    price: 86450000,
     location: "Patan",
     bedrooms: 3,
     bathrooms: 2,
@@ -110,56 +112,54 @@ const properties = [
   },
 ];
 
-// Function to display properties
+function formatNPR(amount) {
+  try {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "NPR",
+      maximumFractionDigits: 0,
+    }).format(amount);
+  } catch (err) {
+    return amount.toLocaleString("en-IN") + " NPR";
+  }
+}
+
+// Display properties
 function displayProperties(propertiesToDisplay) {
   const propertyList = document.getElementById("propertyList");
   propertyList.innerHTML = "";
 
-  if (propertiesToDisplay.length === 0) {
+  if (!propertiesToDisplay || propertiesToDisplay.length === 0) {
     propertyList.innerHTML =
       '<p style="grid-column: 1/-1; text-align: center; font-size: 1.2rem;">No properties match your filters. Please try different criteria.</p>';
     return;
   }
 
-  /**
-   *
-   * @param {number} price
-   * @returns Formatted price string in NPR currency
-   */
-  const priceFormat = (price) =>
-    Intl.NumberFormat("en-NP", {
-      style: "currency",
-      currency: "NPR",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 2,
-    }).format(price * 100);
-
   propertiesToDisplay.forEach((property) => {
     const propertyCard = document.createElement("div");
     propertyCard.className = "property-card";
     propertyCard.innerHTML = `
-                    <div class="property-img">
-                        <img src="${property.image}" alt="${property.title}">
-                    </div>
-                    <div class="property-info">
-                        <div class="property-price">${priceFormat(
-                          property.price
-                        )}</div>
-                        <div class="property-address">${property.address}</div>
-                        <div class="property-features">
-                            <div class="feature"><i class="fas fa-bed"></i> ${
-                              property.bedrooms
-                            } beds</div>
-                            <div class="feature"><i class="fas fa-bath"></i> ${
-                              property.bathrooms
-                            } baths</div>
-                            <div class="feature"><i class="fas fa-ruler-combined"></i> ${
-                              property.sqft
-                            } sqft</div>
-                        </div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                `;
+      <div class="property-img">
+        <img src="${property.image}" alt="${property.title}">
+      </div>
+      <div class="property-info">
+        <h3 class="property-title">${property.title}</h3>
+        <div class="property-price">${formatNPR(property.price)}</div>
+        <div class="property-address">${property.address}</div>
+        <div class="property-features">
+          <div class="feature"><i class="fas fa-bed"></i> ${
+            property.bedrooms
+          } beds</div>
+          <div class="feature"><i class="fas fa-bath"></i> ${
+            property.bathrooms
+          } baths</div>
+          <div class="feature"><i class="fas fa-ruler-combined"></i> ${
+            property.sqft
+          } sqft</div>
+        </div>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    `;
     propertyList.appendChild(propertyCard);
   });
 }
@@ -167,34 +167,49 @@ function displayProperties(propertiesToDisplay) {
 // Filter properties based on form inputs
 function filterProperties() {
   const locationFilter = document.getElementById("location").value;
-  const priceFilter =
-    parseInt(document.getElementById("price").value) || Infinity;
+  const priceValue = document.getElementById("price").value;
+  // Remove non-digit characters (in case the select uses commas)
+  const priceFilter = priceValue
+    ? parseInt(priceValue.toString().replace(/[^0-9]/g, ""), 10)
+    : Infinity;
   const bedroomsFilter =
-    parseInt(document.getElementById("bedrooms").value) || 0;
+    parseInt(document.getElementById("bedrooms").value, 10) || 0;
 
   const filteredProperties = properties.filter((property) => {
-    return (
-      (locationFilter === "" || property.location === locationFilter) &&
-      property.price <= priceFilter &&
-      property.bedrooms >= bedroomsFilter
-    );
+    const matchesLocation =
+      locationFilter === "" || property.location === locationFilter;
+    const matchesPrice =
+      !priceFilter || priceFilter === Infinity
+        ? true
+        : property.price <= priceFilter;
+    const matchesBedrooms = !bedroomsFilter
+      ? true
+      : property.bedrooms >= bedroomsFilter;
+
+    return matchesLocation && matchesPrice && matchesBedrooms;
   });
 
   displayProperties(filteredProperties);
 }
 
-// Event listener for form submission
 document.getElementById("propertyFilter").addEventListener("submit", (e) => {
   e.preventDefault();
   filterProperties();
 });
 
-// Event listener for contact form submission
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  alert("Thank you for your message! An agent will contact you shortly.");
-  this.reset();
+["location", "price", "bedrooms"].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("change", filterProperties);
 });
 
-// Initialize by displaying all properties
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Thank you for your message! An agent will contact you shortly.");
+    this.reset();
+  });
+}
+
+// Initialize
 displayProperties(properties);
